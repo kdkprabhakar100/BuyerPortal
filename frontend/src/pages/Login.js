@@ -1,42 +1,54 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function Login() {
+function Login({ setIsLoggedIn }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = async () => {
-    try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        { email, password }
-      );
+const handleLogin = async () => {
+  setLoading(true);
+  try {
+    const res = await axios.post("http://localhost:5000/api/auth/login", {
+      email,
+      password,
+    });
 
-      localStorage.setItem("token", res.data.token);
-      alert("Login successful");
-    } catch (err) {
-        console.log(err.response?.data);
-        alert(err.response?.data?.message || "Login failed");
-    }
-  };
+    localStorage.setItem("token", res.data.token);
+    setIsLoggedIn(true);
+  } catch (err) {
+    alert(err.response?.data?.message || "Login failed");
+  }
+  setLoading(false);
+};
 
   return (
-    <div>
-      <h2>Login</h2>
-
+    <>
+      <h2 className="text-xl font-bold mb-4 text-center">Login</h2>
       <input
+        className="border p-2 mb-3 w-full rounded"
+        type="email"
         placeholder="Email"
+        value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
 
       <input
-        placeholder="Password"
+        className="border p-2 mb-3 w-full rounded"
         type="password"
+        placeholder="Password"
+        value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button onClick={handleLogin}>Login</button>
-    </div>
+      <button
+  className="bg-blue-500 text-white px-4 py-2 rounded w-full hover:bg-blue-600 transition"
+  onClick={handleLogin}
+  disabled={loading}
+>
+  {loading ? "Logging in..." : "Login"}
+</button>
+    </>
   );
 }
 

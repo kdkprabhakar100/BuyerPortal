@@ -1,7 +1,5 @@
 # BUYER PORTAL WEB APPLICATION
 
-# 🏠 Real Estate Dashboard
-
 A modern and responsive real estate dashboard built using React and Node.js.  
 Users can browse properties, add favourites, and view them in a clean UI.
 

@@ -11,6 +11,8 @@ const protect = async (req, res, next) => {
 
     if (token.startsWith("Bearer")) {
       token = token.split(" ")[1];
+    } else {
+      return res.status(401).json({ message: "Invalid token format" });
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -19,6 +21,7 @@ const protect = async (req, res, next) => {
 
     next();
   } catch (error) {
+    console.error(error.message);
     res.status(401).json({ message: "Not authorized" });
   }
 };

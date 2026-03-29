@@ -25,7 +25,8 @@ const userSchema = new mongoose.Schema(
 
     favourites: [
       {
-        type: String, 
+        type: String,
+        
       },
     ],
   },

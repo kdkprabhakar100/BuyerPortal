@@ -1,0 +1,12 @@
+import React from "react";
+
+function Card({ title, value }) {
+  return (
+    <div className="bg-white p-5 rounded-xl shadow-md w-full">
+      <h3 className="text-gray-500 text-sm">{title}</h3>
+      <p className="text-2xl font-bold text-blue-600">{value}</p>
+    </div>
+  );
+}
+
+export default Card;

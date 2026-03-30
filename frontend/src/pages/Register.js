@@ -1,33 +1,31 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-function Register() {
+function Register({ switchToLogin }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleRegister = async () => {
-    console.log("Register clicked"); 
+      const handleRegister = async () => {
+      try {
+        const res = await axios.post(
+          "http://localhost:5000/api/auth/register",
+          { name, email, password }
+        );
 
-    try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
-        {
-          name,
-          email,
-          password,
+        if (res.status === 201) {
+          alert("Registered successfully!");
+          switchToLogin();  
         }
-      );
 
-      console.log(res.data);
-      alert("Registered successfully! Please login");
+      } catch (err) {
+        console.log("ERROR:", err.response?.data);
 
-    } catch (err) {
-      console.log(err.response?.data);
-      alert(err.response?.data?.message || "Registration failed");
-    }
-  };
-
+        alert(err.response?.data?.message || "Registration failed");
+      }
+    };
   return (
     <>
       <h2 className="text-xl font-bold mb-4 text-center">Register</h2>

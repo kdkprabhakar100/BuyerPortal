@@ -8,8 +8,18 @@ function Dashboard() {
   const [properties, setProperties] = useState([]);
   const [favourites, setFavourites] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [usersCount, setUsersCount] = useState(0);
 
-  const fetchProperties = async () => {
+const fetchUserCount = async () => {
+  try {
+    const res = await API.get("/auth/users/count");
+    setUsersCount(res.data.count);
+  } catch (err) {
+    console.log(err.response?.data || err.message);
+  }
+};
+
+  async function fetchProperties() {
     setLoading(true);
 
     setTimeout(() => {
@@ -78,7 +88,7 @@ function Dashboard() {
 
       setLoading(false);
     }, 500);
-  };
+  }
 
   const fetchFavourites = async () => {
     try {
@@ -110,6 +120,7 @@ function Dashboard() {
   useEffect(() => {
     fetchProperties();
     fetchFavourites();
+    fetchUserCount();
   }, []);
 
 return (
@@ -123,7 +134,7 @@ return (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <Card title="Total Properties" value={properties.length} />
           <Card title="Favourites" value={favourites.length} />
-          <Card title="Users" value="10" />
+          <Card title="Users" value={usersCount} />
         </div>
 
 

@@ -11,6 +11,29 @@ const registerUser = async (req, res) => {
     if (userExists) {
       return res.status(400).json({ message: "User already exists" });
     }
+        if (!password) {
+          return res.status(400).json({ message: "Password is required" });
+        }
+
+        if (password.length < 8) {
+          return res.status(400).json({ message: "At least 8 characters" });
+        }
+
+        if (!/[A-Z]/.test(password)) {
+          return res.status(400).json({ message: "Must include uppercase letter" });
+        }
+
+        if (!/[a-z]/.test(password)) {
+          return res.status(400).json({ message: "Must include lowercase letter" });
+        }
+
+        if (!/\d/.test(password)) {
+          return res.status(400).json({ message: "Must include a number" });
+        }
+
+        if (!/[@$!%*?&]/.test(password)) {
+          return res.status(400).json({ message: "Must include special character" });
+        } 
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -63,4 +86,13 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser };
+const getUserCount = async (req, res) => {
+  try {
+    const count = await User.countDocuments();
+    res.json({ count });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+module.exports = { registerUser, loginUser, getUserCount };

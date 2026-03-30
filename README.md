@@ -66,6 +66,10 @@ techcraft/
 https://github.com/kdkprabhakar100
 
 ## live website
+https://buyer-portal-sigma.vercel.app/
+
+## API Rendering
+https://buyerportal.onrender.com
 
 ## Mobile View
 ![alt text](image.png)

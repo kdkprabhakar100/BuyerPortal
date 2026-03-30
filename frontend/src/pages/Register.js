@@ -1,30 +1,30 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+console.log("API URL:", process.env.REACT_APP_API_URL);
 
 function Register({ switchToLogin }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-      const handleRegister = async () => {
-      try {
-        const res = await axios.post(
-          `${import.meta.env.VITE_API_URL}/api/register`,
-          { name, email, password }
-        );
+const handleRegister = async () => {
+  try {
+    const res = await axios.post(
+      `${process.env.REACT_APP_API_URL}/api/auth/register`,
+      { name, email, password }
+    );
 
-        if (res.status === 201) {
-          alert("Registered successfully!");
-          switchToLogin();  
-        }
+    if (res.status === 201) {
+      alert("Registered successfully!");
+      switchToLogin();
+    }
 
-      } catch (err) {
-        console.log("ERROR:", err.response?.data);
-
-        alert(err.response?.data?.message || "Registration failed");
-      }
-    };
+  } catch (err) {
+    console.log("FULL ERROR:", err.response?.data);
+    alert(err.response?.data?.message || "Registration failed");
+  }
+};
   return (
     <>
       <h2 className="text-xl font-bold mb-4 text-center">Register</h2>

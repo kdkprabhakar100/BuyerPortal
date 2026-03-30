@@ -76,3 +76,24 @@ https://buyerportal.onrender.com
 
 ## Laptop view
 ![alt text](image-1.png)
+
+## Application Flow
+[User]
+   ↓
+[Frontend (React)]
+   ↓
+[Auth System]
+   ├── Register
+   └── Login
+   ↓
+[JWT Authentication]
+   ↓
+[Dashboard]
+   ├── View Properties
+   ├── Add to Favourites
+   ├── Remove from Favourites
+   └── View User Count
+   ↓
+[Backend (Node.js / Express)]
+   ↓
+[MongoDB Database]

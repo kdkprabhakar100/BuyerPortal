@@ -65,6 +65,9 @@ techcraft/
 ## GITHUB
 https://github.com/kdkprabhakar100
 
+## Gmail
+kdkprabhakar100@gmail.com
+
 ## live website
 https://buyer-portal-sigma.vercel.app/
 

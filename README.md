@@ -5,6 +5,9 @@ Users can browse properties, add favourites, and view them in a clean UI.
 
 ---
 
+
+
+
 ## 🚀 Features
 
 - View all properties
@@ -100,6 +103,8 @@ https://buyerportal.onrender.com
 [Backend (Node.js / Express)]
    ↓
 [MongoDB Database]
+
+
 
 
 ## .env

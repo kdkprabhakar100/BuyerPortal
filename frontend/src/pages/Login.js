@@ -18,6 +18,7 @@ const handleLogin = async () => {
     setIsLoggedIn(true);
   } catch (err) {
     alert(err.response?.data?.message || "Login failed");
+    
   }
   setLoading(false);
 };

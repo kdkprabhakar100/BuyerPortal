@@ -108,5 +108,6 @@ PORT=5000
 MONGO_URI=mongodb://admin:admin12345@ac-z53eohl-shard-00-00.ljpvx0a.mongodb.net:27017,ac-z53eohl-shard-00-01.ljpvx0a.mongodb.net:27017,ac-z53eohl-shard-00-02.ljpvx0a.mongodb.net:27017/realestate?ssl=true&replicaSet=atlas-1l2qr8-shard-0&authSource=admin&retryWrites=true&w=majority
 JWT_SECRET=pk_secret_key
 
+
 # frontend
 REACT_APP_API_URL=https://buyerportal.onrender.com

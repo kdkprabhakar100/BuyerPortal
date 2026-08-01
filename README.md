@@ -18,6 +18,7 @@ Users can browse properties, add favourites, and view them in a clean UI.
 - Authentication (Login / Register)
 - Fast and clean UI using Tailwind CSS
 
+   
 ---
 
 ## Tech Stack
@@ -103,7 +104,7 @@ https://buyerportal.onrender.com
 [Backend (Node.js / Express)]
    ↓
 [MongoDB Database]
-
+#updates
 
 
 

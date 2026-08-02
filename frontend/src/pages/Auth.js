@@ -39,6 +39,8 @@ function Auth({ setIsLoggedIn }) {
         ) : (
           
           <Register switchToLogin={() => setIsLogin(true)} />
+          
+
         )}
       </div>
 

@@ -9,6 +9,7 @@ function Dashboard() {
   const [favourites, setFavourites] = useState([]);
   const [loading, setLoading] = useState(false);
   const [usersCount, setUsersCount] = useState(0);
+  
 
   const fetchUserCount = async () => {
     try {

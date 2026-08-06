@@ -21,6 +21,7 @@ function Dashboard() {
   };
 
   // Fake properties (same as yours)
+  s
   async function fetchProperties() {
     setLoading(true);
 

@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import { Toaster } from "react-hot-toast";
 
 
+
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
     !!localStorage.getItem("token")
